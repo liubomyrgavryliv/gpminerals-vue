@@ -43,6 +43,7 @@
             v-bind="link"
           />
         </q-item-label>
+        <q-space />
         <q-item-label
           header
           class="text-grey-8"
