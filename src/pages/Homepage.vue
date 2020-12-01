@@ -1,6 +1,7 @@
 <template>
   <q-page padding>
     <h3 class="text-center">Welcome to gpminerals!</h3>
+    <Search/>
      <q-card flat bordered class="my-card">
       <q-card-section>
         <div class="text-h6">Our data</div>
@@ -22,7 +23,14 @@
 </template>
 
 <script>
+import Search from '../components/Search'
 export default {
-  // name: 'PageName',
+  name: 'Homepage',
+  props: {
+
+  },
+  components: {
+    Search
+  }
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
   <q-layout view="hHh Lpr fFf">
-    <q-header elevated class="bg-black">
+    <q-header
+      elevated
+      style="background: #24292e">
       <q-toolbar>
         <q-btn
           flat
@@ -94,13 +96,12 @@ export default {
         {
           title: 'homepage',
           caption: 'home',
-          icon: 'web',
+          icon: 'home',
           router_link: '/home'
         },
         {
-          title: 'homepages',
-          caption: 'home',
-          icon: 'web',
+          title: 'about',
+          icon: 'info',
           router_link: 'about'
         }
       ]
