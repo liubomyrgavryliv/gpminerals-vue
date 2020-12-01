@@ -1,24 +1,26 @@
 <template>
-    <div>
-        <q-input 
-        rounded 
-        outlined 
-        v-model="query" 
-        debounce="300"
-        label="Search minerals" 
-        bottomSlots
-        itemAligned/>
-        <q-list 
-            :bordered="minerals.length > 0">
-            <q-item v-for="mineral in minerals"
-                    v-bind:key="mineral.mineral_id"
-                    clickable v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ mineral.mineral_name }}</q-item-label>
-                    <q-item-label>{{ mineral.formula }}</q-item-label>
-                </q-item-section>
-            </q-item>
-        </q-list>
+    <div class="row justify-center">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <q-input
+            rounded 
+            outlined 
+            v-model="query" 
+            debounce="300"
+            label="Search minerals" 
+            bottomSlots
+            itemAligned/>
+            <q-list 
+                :bordered="minerals.length > 0">
+                <q-item v-for="mineral in minerals"
+                        v-bind:key="mineral.mineral_id"
+                        clickable v-ripple>
+                    <q-item-section>
+                        <q-item-label>{{ mineral.mineral_name }}</q-item-label>
+                        <q-item-label>{{ mineral.formula }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+            </q-list>
+        </div>
     </div>
 </template>
 <script>
