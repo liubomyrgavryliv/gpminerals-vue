@@ -35,27 +35,11 @@
           class="text-grey-8"
         >
           App navigation
-         <q-item
+         <RouterLink
             v-for="link in navigation"
             :key="link.title"
             v-bind="link"
-            clickable
-            :to="link.router_link"
-          >
-            <q-item-section
-              v-if="link.icon"
-              avatar
-            >
-              <q-icon :name="link.icon" />
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>{{ link.title }}</q-item-label>
-              <q-item-label link.caption>
-                {{ link.caption }}
-              </q-item-label>
-            </q-item-section>
-          </q-item>
+          />
         </q-item-label>
         <q-item-label
           header
@@ -79,6 +63,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import RouterLink from 'components/RouterLink.vue'
 
 const linksData = [
   {
@@ -97,7 +82,10 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  components: {
+    EssentialLink,
+    RouterLink
+  },
   data () {
     return {
       leftDrawerOpen: false,
@@ -107,7 +95,7 @@ export default {
           title: 'homepage',
           caption: 'home',
           icon: 'web',
-          router_link: ''
+          router_link: '/home'
         },
         {
           title: 'homepages',
