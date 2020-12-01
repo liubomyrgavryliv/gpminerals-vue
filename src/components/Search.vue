@@ -47,10 +47,19 @@ export default {
             }
         };
 
-        ApiService.get('api', 'statistics')
+        let params = {
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            params : {
+                search: this.query
+            }
+        }
+
+        ApiService.get('search', 'msspecies', params)
                                 .then(function (response) {
-                                    console.log(response)
-                                    return response
+                                    console.log(response.data.results)
+                                    return response.data.results
                                 })
                                 .catch(function (error) {
                                     console.log(error);
@@ -59,6 +68,11 @@ export default {
     },
     async created () {
             this.minerals = await this.getMinerals()
+    },
+    watch: {
+        query: async function () {
+            this.minerals = await this.getMinerals()
+        }
     }
 }
 </script>

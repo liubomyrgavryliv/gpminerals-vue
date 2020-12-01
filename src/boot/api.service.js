@@ -21,8 +21,8 @@ const ApiService = {
 //     delete Vue.axios.defaults.headers.common["Authorization"];
 //   },
 
-  get(resource, slug = "") {
-    return Vue.axios.get(`${resource}/${slug}`).catch(error => {
+  get(resource, slug = "", params) {
+    return Vue.axios.get(`${resource}/${slug}`, params).catch(error => {
       throw new Error(`ApiService ${error}`);
     });
   },
