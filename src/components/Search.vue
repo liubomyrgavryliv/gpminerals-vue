@@ -8,11 +8,15 @@
         label="Search minerals" 
         bottomSlots
         itemAligned/>
-        <q-list dark bordered separator style="max-width: 318px">
+        <q-list 
+            :bordered="minerals.length > 0">
             <q-item v-for="mineral in minerals"
-                    v-bind:key="mineral"
+                    v-bind:key="mineral.mineral_id"
                     clickable v-ripple>
-                <q-item-section>{{ mineral }}</q-item-section>
+                <q-item-section>
+                    <q-item-label>{{ mineral.mineral_name }}</q-item-label>
+                    <q-item-label>{{ mineral.formula }}</q-item-label>
+                </q-item-section>
             </q-item>
         </q-list>
     </div>
@@ -36,17 +40,6 @@ export default {
     methods: {
         async getMinerals () {
 
-        var config = {
-            method: 'get',
-            url: '0.0.0.0:8000/search/msspecies',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            params : {
-                search: this.query
-            }
-        };
-
         let params = {
             headers: { 
                 'Content-Type': 'application/json'
@@ -56,7 +49,7 @@ export default {
             }
         }
 
-        ApiService.get('search', 'msspecies', params)
+        return ApiService.get('search', 'msspecies', params)
                                 .then(function (response) {
                                     console.log(response.data.results)
                                     return response.data.results
@@ -67,7 +60,7 @@ export default {
         }
     },
     async created () {
-            this.minerals = await this.getMinerals()
+        this.minerals = await this.getMinerals()
     },
     watch: {
         query: async function () {
