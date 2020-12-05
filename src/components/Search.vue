@@ -17,7 +17,9 @@
                 </template>
             </q-input>
             <q-list 
-                :bordered="minerals.length > 0">
+                :bordered="minerals.length > 0"
+                separator
+                >
                 <q-item v-for="mineral in minerals"
                         v-bind:key="mineral.mineral_id"
                         clickable v-ripple>
@@ -26,7 +28,7 @@
                         <q-item-label caption lines="2"><span v-html="mineral.formula"></span></q-item-label>
                     </q-item-section>
                     <q-item-section side top v-if="mineral.ns_index">
-                        <q-badge color="teal">{{ mineral.ns_index }}</q-badge>
+                        <q-badge color="secondary">{{ mineral.ns_index }}</q-badge>
                     </q-item-section>
                 </q-item>
             </q-list>
