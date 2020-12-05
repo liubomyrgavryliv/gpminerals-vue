@@ -7,8 +7,14 @@
             v-model="query" 
             debounce="300"
             label="Search minerals" 
+            type="search"
             bottomSlots
-            itemAligned/>
+            itemAligned
+            clearable>
+                <template v-slot:prepend>
+                    <q-icon name="search" />
+                </template>
+            </q-input>
             <q-list 
                 :bordered="minerals.length > 0">
                 <q-item v-for="mineral in minerals"
