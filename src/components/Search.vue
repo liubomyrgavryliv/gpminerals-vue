@@ -10,7 +10,8 @@
             type="search"
             bottomSlots
             itemAligned
-            clearable>
+            clearable
+            @clear="clearSearch">
                 <template v-slot:prepend>
                     <q-icon name="search" />
                 </template>
@@ -22,7 +23,10 @@
                         clickable v-ripple>
                     <q-item-section>
                         <q-item-label>{{ mineral.mineral_name }}</q-item-label>
-                        <q-item-label>{{ mineral.formula }}</q-item-label>
+                        <q-item-label caption lines="2"><span v-html="mineral.formula"></span></q-item-label>
+                    </q-item-section>
+                    <q-item-section side top v-if="mineral.ns_index">
+                        <q-badge color="teal">{{ mineral.ns_index }}</q-badge>
                     </q-item-section>
                 </q-item>
             </q-list>
@@ -65,6 +69,9 @@ export default {
                                 .catch(function (error) {
                                     console.log(error);
                                 });
+        },
+        clearSearch(){
+            this.query = ''
         }
     },
     async created () {
@@ -72,7 +79,11 @@ export default {
     },
     watch: {
         query: async function () {
-            this.minerals = await this.getMinerals()
+            if (this.query != ''){
+                this.minerals = await this.getMinerals()
+            } else {
+                this.minerals = []
+            }
         }
     }
 }
