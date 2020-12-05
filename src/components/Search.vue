@@ -25,10 +25,10 @@
                         clickable v-ripple>
                     <q-item-section>
                         <q-item-label>{{ mineral.mineral_name }}</q-item-label>
-                        <q-item-label caption lines="2"><span v-html="mineral.formula"></span></q-item-label>
+                        <q-item-label caption lines="1"><span v-html="mineral.formula"></span></q-item-label>
                     </q-item-section>
                     <q-item-section side top v-if="mineral.ns_index">
-                        <q-badge color="secondary">{{ mineral.ns_index }}</q-badge>
+                        <q-badge floating color="secondary">{{ mineral.ns_index }}</q-badge>
                     </q-item-section>
                 </q-item>
             </q-list>

@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr fFf">
     <q-header
       elevated
-      style="background: #24292e">
+      style="background: primary">
       <q-toolbar>
         <q-btn
           flat
@@ -28,8 +28,8 @@
       content-class="bg-blue-grey-1"
       :width="270"
     >
+    <q-scroll-area class="fit">
       <q-list
-        dense
         :value="false"
         >
         <q-item-label
@@ -56,6 +56,7 @@
           v-bind="link"
         />
       </q-list>
+    </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
