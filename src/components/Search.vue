@@ -63,7 +63,7 @@ export default {
             }
         }
 
-        return ApiService.get('search', 'msspecies', params)
+        return ApiService.get('search', 'mineral_name', params)
                                 .then(function (response) {
                                     console.log(response.data.results)
                                     return response.data.results
