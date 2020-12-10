@@ -5,20 +5,16 @@
       style="background: primary">
       <q-toolbar
         inset>
-
-        <q-toolbar-title>
+        <q-toolbar-title shrink>
           gpminerals
         </q-toolbar-title>
-
-        <div v-if="$q.screen.gt.sm" class="q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap float-left">
+        <div v-if="$q.screen.gt.sm" class='row'>
           <RouterLink
             v-for="link in navigation"
             :key="link.title"
             v-bind="link"
           />
         </div>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 

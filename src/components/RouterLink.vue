@@ -17,15 +17,19 @@
       </q-item-label> -->
     <!-- </q-item-section>
   </q-item> -->
-  <q-tabs>
+  <q-tabs
+      inline-label
+      mobile-arrows
+      narrow-indicator
+      no-caps
+      dense
+      align="justify"
+      >
     <q-route-tab
       :icon="icon"
       :label="title"
       :to="router_link"
       exact
-      inlineLabel
-      noCaps
-      dense
     />
 </q-tabs>
 </template>
