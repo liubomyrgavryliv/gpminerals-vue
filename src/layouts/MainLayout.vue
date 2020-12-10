@@ -8,7 +8,18 @@
         <q-toolbar-title shrink>
           gpminerals
         </q-toolbar-title>
-         <div class="q-gutter-y-md row" style="max-width: 600px">
+        <q-btn-dropdown auto-close stretch flat label="Menu">
+          <q-list>
+            <q-item clickable @click="tab = 'movies'">
+              <q-item-section>Movies</q-item-section>
+            </q-item>
+
+            <q-item clickable @click="tab = 'photos'">
+              <q-item-section>Photos</q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+         <div v-if="$q.screen.gt.sm" class='row'>
           <RouterLink
             v-for="link in navigation"
             :key="link.title"
