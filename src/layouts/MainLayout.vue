@@ -8,7 +8,7 @@
         <q-toolbar-title shrink>
           gpminerals
         </q-toolbar-title>
-        <div v-if="$q.screen.gt.sm" class='row'>
+         <div class="q-gutter-y-md row" style="max-width: 600px">
           <RouterLink
             v-for="link in navigation"
             :key="link.title"
