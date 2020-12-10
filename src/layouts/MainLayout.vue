@@ -58,7 +58,7 @@ export default {
           title: 'homepage',
           caption: 'home',
           icon: 'home',
-          router_link: '/home'
+          router_link: '/'
         },
         {
           title: 'about',
