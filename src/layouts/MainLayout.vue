@@ -3,61 +3,24 @@
     <q-header
       elevated
       style="background: primary">
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+      <q-toolbar
+        inset>
 
         <q-toolbar-title>
           gpminerals
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      elevated
-      content-class="bg-blue-grey-1"
-      :width="270"
-    >
-    <q-scroll-area class="fit">
-      <q-list
-        :value="false"
-        >
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          App navigation
-         <RouterLink
+        <div v-if="$q.screen.gt.sm" class="q-ml-xs q-gutter-md text-body2 text-weight-bold row items-center no-wrap float-left">
+          <RouterLink
             v-for="link in navigation"
             :key="link.title"
             v-bind="link"
           />
-        </q-item-label>
-        <q-space />
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-scroll-area>
-    </q-drawer>
+        </div>
+
+        <div>Quasar v{{ $q.version }}</div>
+      </q-toolbar>
+    </q-header>
 
     <q-page-container>
       <router-view />

@@ -1,22 +1,33 @@
 <template>
-  <q-item
+  <!-- <q-item
     clickable
     :to="router_link"
-  >
-    <q-item-section
+  > -->
+    <!-- <q-item-section
       v-if="icon"
       avatar
     >
       <q-icon :name="icon" />
-    </q-item-section>
+    </q-item-section> -->
 
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>
+    <!-- <q-item-section>
+      <q-item-label>{{ title }}</q-item-label> -->
+      <!-- <q-item-label caption>
         {{ caption }}
-      </q-item-label>
-    </q-item-section>
-  </q-item>
+      </q-item-label> -->
+    <!-- </q-item-section>
+  </q-item> -->
+  <q-tabs>
+    <q-route-tab
+      :icon="icon"
+      :label="title"
+      :to="router_link"
+      exact
+      inlineLabel
+      noCaps
+      dense
+    />
+</q-tabs>
 </template>
 
 <script>
