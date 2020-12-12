@@ -3,12 +3,8 @@
     <q-header
       elevated
       style="background: primary">
-      <q-toolbar
-        inset>
-        <q-toolbar-title shrink>
-          gpminerals
-        </q-toolbar-title>
-        <q-btn-dropdown auto-close stretch flat label="Menu">
+      <q-toolbar>
+        <q-btn-dropdown auto-close stretch flat icon="menu">
           <q-list>
             <q-item clickable @click="tab = 'movies'">
               <q-item-section>Movies</q-item-section>
@@ -19,6 +15,9 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
+          <q-toolbar-title shrink>
+            gpminerals
+          </q-toolbar-title>
          <div v-if="$q.screen.gt.sm" class='row'>
           <RouterLink
             v-for="link in navigation"
