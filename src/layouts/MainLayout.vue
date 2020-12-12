@@ -4,17 +4,24 @@
       elevated
       style="background: primary">
       <q-toolbar>
-        <q-btn-dropdown auto-close stretch flat icon="menu">
-          <q-list>
-            <q-item clickable @click="tab = 'movies'">
-              <q-item-section>Movies</q-item-section>
+        <q-btn 
+          flat 
+          round 
+          color="white" 
+          icon="menu"
+          v-if="$q.screen.lt.sm"
+          >
+          <q-menu>
+          <q-list style="min-width: 100px">
+            <q-item clickable v-close-popup>
+              <q-item-section>New tab</q-item-section>
             </q-item>
-
-            <q-item clickable @click="tab = 'photos'">
-              <q-item-section>Photos</q-item-section>
+            <q-item clickable v-close-popup>
+              <q-item-section>New1 tab</q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown>
+        </q-menu>
+          </q-btn>
           <q-toolbar-title shrink>
             gpminerals
           </q-toolbar-title>
@@ -77,6 +84,9 @@ export default {
         }
       ]
     }
+  },
+  mounted(){
+    this.$q.iconSet.arrow.dropdown = "menu"
   }
 }
 </script>
