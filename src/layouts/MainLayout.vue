@@ -12,14 +12,16 @@
           v-if="$q.screen.lt.sm"
           >
           <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item clickable v-close-popup>
-              <q-item-section>New tab</q-item-section>
-            </q-item>
-            <q-item clickable v-close-popup>
-              <q-item-section>New1 tab</q-item-section>
-            </q-item>
-          </q-list>
+             <q-list 
+             v-for="link in navigation"
+             :key="link.title"
+             style="min-width: 100px">
+                <q-item clickable v-close-popup :to="link.router_link" exact>
+                    <q-item-section>
+                      {{ link.title }}
+                    </q-item-section>
+                </q-item>
+             </q-list>
         </q-menu>
           </q-btn>
           <q-toolbar-title shrink>
@@ -29,8 +31,9 @@
           <RouterLink
             v-for="link in navigation"
             :key="link.title"
-            v-bind="link"
-          />
+            :title="link.title"
+            :router_link="link.router_link"
+          ></RouterLink>
         </div>
       </q-toolbar>
     </q-header>
@@ -42,7 +45,6 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
 import RouterLink from 'components/RouterLink.vue'
 
 const linksData = [
@@ -63,13 +65,11 @@ const linksData = [
 export default {
   name: 'MainLayout',
   components: {
-    EssentialLink,
     RouterLink
   },
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData,
       navigation: [
         {
           title: 'homepage',
