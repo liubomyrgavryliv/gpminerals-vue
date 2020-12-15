@@ -13,14 +13,17 @@
           >
           <q-menu>
              <q-list 
-             v-for="link in navigation"
-             :key="link.title"
-             style="min-width: 100px">
-                <q-item clickable v-close-popup :to="link.router_link" exact>
-                    <q-item-section>
-                      {{ link.title }}
-                    </q-item-section>
-                </q-item>
+             style="min-width: 100px"
+             dense
+             separator
+             boredered>
+             <div v-for="link in navigation" :key="link.title">
+                  <q-item clickable v-close-popup :to="link.router_link" exact>
+                      <q-item-section>
+                        {{ link.title }}
+                      </q-item-section>
+                  </q-item>
+                </div>
              </q-list>
         </q-menu>
           </q-btn>

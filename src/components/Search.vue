@@ -30,6 +30,9 @@
                     <q-item-section side top v-if="mineral.ns_index">
                         <q-badge floating color="secondary">{{ mineral.ns_index }}</q-badge>
                     </q-item-section>
+                    <!-- <q-item-section side v-if="mineral.ns_index">
+                        <q-badge color="secondary">{{ parseStatus(mineral.status) }}</q-badge>
+                    </q-item-section> -->
                 </q-item>
             </q-list>
         </div>
@@ -59,7 +62,7 @@ export default {
                 'Content-Type': 'application/json'
             },
             params : {
-                search: this.query
+                search: `mineral_name: ${this.query}`
             }
         }
 
@@ -74,6 +77,9 @@ export default {
         },
         clearSearch(){
             this.query = ''
+        },
+        parseStatus(statuses){
+            return statuses.map(d => d.status_id).join(';')
         }
     },
     async created () {
