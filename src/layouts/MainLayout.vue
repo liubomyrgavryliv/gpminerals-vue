@@ -40,7 +40,7 @@
           >
           <q-list 
              @mouseover.native="listActive = true"
-             @mouseout="listActive = false"
+             @mouseout.native="listActive = false"
              style="min-width: 100px"
              dense
              separator
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { debounce } from 'quasar';
 import RouterLink from 'components/RouterLink.vue'
 
 const linksData = [
@@ -91,7 +92,6 @@ export default {
       menu: false,
       menuActive: false,
       listActive: false,
-      leftDrawerOpen: false,
       navigation: [
         {
           title: 'homepage',
@@ -111,8 +111,22 @@ export default {
     this.$q.iconSet.arrow.dropdown = "menu"
   },
   methods: {
-    activateMenu(){
-      this.menuActive = !this.menuActive;
+    debounceFunc: debounce(function() { this.checkMenu() }, 100),
+    checkMenu () {
+      if (this.menuActive || this.listActive) {
+        this.menu = true
+      }
+      else {
+        this.menu = false
+      }
+    }
+  },
+  watch: {
+    menuActive (val) {
+      this.debounceFunc()
+    },
+    listActive (val) {
+      this.debounceFunc()
     }
   }
 }
