@@ -65,9 +65,11 @@ export default {
                 'Content-Type': 'application/json'
             },
             params : {
-                search: `mineral_name: ${this.query}`
+                search: `mineral_name:${this.query}`
             }
         }
+
+        
 
         return ApiService.get('search', 'mineral_list', params)
                                 .then(function (response) {
