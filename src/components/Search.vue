@@ -26,7 +26,7 @@
                     <q-item 
                             clickable 
                             v-ripple
-                            @click="selectMineral(item.mineral_id)"
+                            @click="showMineralCard = true"
                             >
                         <q-item-section>
                             <q-item-label>{{ item.mineral_name }}</q-item-label>
@@ -40,20 +40,38 @@
                             <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
                             </q-item-label>
                         </q-item-section>
+                               <q-dialog 
+                                    auto-close
+                                    seamless
+                                    v-model="showMineralCard">
+                                    <q-card>
+                                        <q-card-section class="bg-dark text-white">
+                                            <div class="text-h6">{{ item.mineral_name }}</div>
+                                            <div class="text-subtitle2">{{ parseStatusDescription(item.status) }}</div>
+                                        </q-card-section>
+
+                                        <q-separator />
+
+                                        <q-card-actions align="right">
+                                            <q-btn flat>Show details</q-btn>
+                                            <q-btn flat>Action 2</q-btn>
+                                        </q-card-actions>
+                                    </q-card>  
+                               </q-dialog>
                         <!-- <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
-                            <q-card class="my-card">
-                                <q-card-section class="bg-primary text-white">
-                                    <div class="text-h6">Related minerals</div>
-                                    <div class="text-subtitle2">by John Doe</div>
+                            <q-card>
+                                <q-card-section class="bg-dark text-white">
+                                    <div class="text-h6">{{ item.mineral_name }}</div>
+                                    <div class="text-subtitle2">{{ parseStatusDescription(item.status) }}</div>
                                 </q-card-section>
 
                                 <q-separator />
 
                                 <q-card-actions align="right">
-                                    <q-btn flat>Action 1</q-btn>
+                                    <q-btn flat>Show details</q-btn>
                                     <q-btn flat>Action 2</q-btn>
                                 </q-card-actions>
-                            </q-card>
+                                </q-card>  
                         </q-tooltip> -->
                     </q-item>
              </template>
@@ -107,6 +125,9 @@ export default {
         },
         parseStatus(status){
             return status.map(d => d.status_id).join('; ')
+        },
+        parseStatusDescription(status){
+            return status.map(d => d.description_short).join('; ')
         }
     },
     async created () {
