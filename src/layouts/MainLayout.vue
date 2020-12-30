@@ -30,7 +30,37 @@
           <q-toolbar-title shrink>
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-        <q-btn
+            <div>
+            <div 
+              v-if="$q.screen.gt.sm"
+              class="scrollmenu"
+              @mouseover="menuActive = true"
+              @mouseout="menuActive = false"
+            >
+              Menu
+            </div>
+              <q-menu           
+                v-model="menu"
+                transition-show="fade"
+                transition-hide="fade">
+              <q-list 
+                @mouseover.native="listActive = true"
+                @mouseout.native="listActive = false"
+                style="min-width: 100px"
+                dense
+                separator
+                bordered>
+                  <div v-for="link in navigation" :key="link.title">
+                      <q-item clickable v-close-popup :to="link.router_link" exact>
+                          <q-item-section>
+                            {{ link.title }}
+                          </q-item-section>
+                      </q-item>
+                  </div>
+              </q-list>
+            </q-menu>
+          </div>
+        <!-- <q-btn
           color="dark" 
           text-color="white"
           label="Menu"
@@ -61,7 +91,7 @@
                 </div>
             </q-list>
           </q-menu>
-        </q-btn>
+        </q-btn> -->
       </q-toolbar>
     </q-header>
 
