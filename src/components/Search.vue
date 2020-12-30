@@ -21,18 +21,20 @@
                 style="max-height: 55vh; overflow-x: hidden;"
                 :items="minerals"
                 separator
+                @mouseleave="showMineralCard = false"
             >
              <template v-slot="{ item }">
                     <q-item 
                             clickable 
                             v-ripple
                             @click="selectMineral(item.mineral_id)"
+                            @mouseenter="showBriefInfo(item.mineral_id)"
                             >
                         <q-item-section>
                             <q-item-label>{{ item.mineral_name }}</q-item-label>
                             <q-item-label caption lines="1"><span v-html="item.formula"></span></q-item-label>
                         </q-item-section>
-                        <q-item-section side thumbnail v-if="item.ns_index">
+                        <q-item-section side v-if="item.ns_index">
                             <q-item-label>
                             <q-badge color="secondary">{{ item.ns_index }}</q-badge>
                             </q-item-label>
@@ -43,6 +45,19 @@
                     </q-item>
              </template>
             </q-virtual-scroll>
+            <q-card class="my-card" v-show="showMineralCard">
+                <q-card-section class="bg-primary text-white">
+                    <div class="text-h6">Our Changing Planet</div>
+                    <div class="text-subtitle2">by John Doe</div>
+                </q-card-section>
+
+                <q-separator />
+
+                <q-card-actions align="right">
+                    <q-btn flat>Action 1</q-btn>
+                    <q-btn flat>Action 2</q-btn>
+                </q-card-actions>
+            </q-card>
         </div>
     </div>
 </template>
@@ -53,7 +68,8 @@ export default {
     data() {
         return {
             query: '',
-            minerals: []
+            minerals: [],
+            showMineralCard: false
         }
     },
     props: {
@@ -88,6 +104,10 @@ export default {
         },
         selectMineral(event){
             console.log(event)
+        },
+        showBriefInfo(mineral_id){
+            console.log(mineral_id)
+            this.showMineralCard = true;
         }
     },
     async created () {
