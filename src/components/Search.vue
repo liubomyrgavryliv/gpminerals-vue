@@ -32,12 +32,12 @@
                             <q-item-label>{{ item.mineral_name }}</q-item-label>
                             <q-item-label caption lines="1"><span v-html="item.formula"></span></q-item-label>
                         </q-item-section>
-                        <q-item-section side v-if="item.ns_index">
-                            <q-item-label>
+                        <q-item-section side>
+                            <q-item-label v-if="item.ns_index">
                             <q-badge color="secondary">{{ item.ns_index }}</q-badge>
                             </q-item-label>
-                            <q-item-label>
-                            <q-badge color="warning">{{ item.status }}</q-badge>
+                            <q-item-label v-if="item.status.length > 0">
+                            <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
                             </q-item-label>
                         </q-item-section>
                         <!-- <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
@@ -104,6 +104,9 @@ export default {
         },
         selectMineral(event){
             console.log(event)
+        },
+        parseStatus(status){
+            return status.map(d => d.status_id).join('; ')
         }
     },
     async created () {
