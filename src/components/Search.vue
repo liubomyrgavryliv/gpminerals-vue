@@ -23,7 +23,10 @@
                 >
                 <q-item v-for="mineral in minerals"
                         v-bind:key="mineral.mineral_id"
-                        clickable v-ripple>
+                        clickable 
+                        v-ripple
+                        @click="selectMineral(mineral.mineral_id)"
+                        >
                     <q-item-section>
                         <q-item-label>{{ mineral.mineral_name }}</q-item-label>
                         <q-item-label caption lines="1"><span v-html="mineral.formula"></span></q-item-label>
@@ -81,6 +84,9 @@ export default {
         },
         parseStatus(statuses){
             return statuses.map(d => d.status_id).join(';')
+        },
+        selectMineral(event){
+            console.log(event)
         }
     },
     async created () {
