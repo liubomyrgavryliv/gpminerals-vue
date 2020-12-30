@@ -30,23 +30,17 @@
           <q-toolbar-title shrink>
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-         <!-- <div v-if="$q.screen.gt.sm" class='row'>
-          <RouterLink
-            v-for="link in navigation"
-            :key="link.title"
-            :title="link.title"
-            :router_link="link.router_link"
-          ></RouterLink>
-        </div> -->
         <q-btn-dropdown 
           color="primary" 
           label="Menu"
           v-if="$q.screen.gt.sm"
-          v-model="menuActive"
+          v-model="menu"
           @mouseover.native="menuActive = true"
-          @mouseleave.native="menuActive = false"
+          @mouseout.native="menuActive = false"
           >
           <q-list 
+             @mouseover.native="listActive = true"
+             @mouseout="listActive = false"
              style="min-width: 100px"
              dense
              separator
@@ -94,7 +88,9 @@ export default {
   },
   data () {
     return {
+      menu: false,
       menuActive: false,
+      listActive: false,
       leftDrawerOpen: false,
       navigation: [
         {
