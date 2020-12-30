@@ -33,12 +33,16 @@
                             <q-item-label caption lines="1"><span v-html="item.formula"></span></q-item-label>
                         </q-item-section>
                         <q-item-section side>
-                            <q-icon name="settings_remote" class="text-brown cursor-pointer">
-                                <q-popup-proxy>
-                                <!-- <q-dialog 
-                                        auto-close
-                                        seamless> -->
-                                        <q-banner>
+                            <q-item-label v-if="item.ns_index">
+                            <q-badge color="secondary">{{ item.ns_index }}</q-badge>
+                            </q-item-label>
+                            <q-item-label v-if="item.status.length > 0">
+                            <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
+                            </q-item-label>
+                        </q-item-section>
+                            <q-popup-proxy>
+                                 <q-dialog v-model="showMineralCard">
+                                    <q-banner class="bg-dark text-white">
                                         <q-card>
                                             <q-card-section class="bg-dark text-white">
                                                 <div class="text-h6">{{ item.mineral_name }}</div>
@@ -52,19 +56,9 @@
                                                 <q-btn flat>Action 2</q-btn>
                                             </q-card-actions>
                                         </q-card>  
-                                        </q-banner>
-                                <!-- </q-dialog> -->
-                                </q-popup-proxy>
-                            </q-icon>
-                        </q-item-section>
-                        <q-item-section side>
-                            <q-item-label v-if="item.ns_index">
-                            <q-badge color="secondary">{{ item.ns_index }}</q-badge>
-                            </q-item-label>
-                            <q-item-label v-if="item.status.length > 0">
-                            <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
-                            </q-item-label>
-                        </q-item-section>
+                                    </q-banner>
+                                 </q-dialog>
+                            </q-popup-proxy>
                         <!-- <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
                             <q-card>
                                 <q-card-section class="bg-dark text-white">
