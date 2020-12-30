@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr fFf">
     <q-header
       elevated
-      style="background: info;">
+      class='bg-dark'>
       <q-toolbar>
         <q-btn 
           flat 
@@ -27,60 +27,16 @@
              </q-list>
         </q-menu>
           </q-btn>
-          <q-toolbar-title shrink>
+          <q-toolbar-title>
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-           <q-space />
-          <q-btn-toggle
-                  v-model="model"
-                  v-if="$q.screen.gt.sm"
-                  flat 
-                  stretch
-                  toggle-color="yellow"
-                  :options="[
-                    {label: 'One', value: 'one'},
-                    {label: 'Two', value: 'two'},
-                    {label: 'Three', value: 'three'}
-                  ]"
-                >
-          </q-btn-toggle>
-            <!-- <div>
-              <div 
-                v-if="$q.screen.gt.sm"
-                class="scrollmenu"
-                @mouseover="menuActive = true"
-                @mouseout="menuActive = false"
-              >
-                Menu
-              </div>
-              <q-menu           
-                v-model="menu"
-                transition-show="fade"
-                transition-hide="fade">
-              <q-list 
-                @mouseover.native="listActive = true"
-                @mouseout.native="listActive = false"
-                style="min-width: 100px"
-                dense
-                separator
-                bordered>
-                  <div v-for="link in navigation" :key="link.title">
-                      <q-item clickable v-close-popup :to="link.router_link" exact>
-                          <q-item-section>
-                            {{ link.title }}
-                          </q-item-section>
-                      </q-item>
-                  </div>
-              </q-list>
-            </q-menu>
-          </div> -->
-        <!-- <q-btn
+        <q-btn
           color="dark" 
           text-color="white"
           label="Menu"
           rounded
           flat
-          v-if="$q.screen.gt.sm"
+          v-if="$q.screen.gt.xs"
           no-caps
           @mouseover.native="menuActive = true"
           @mouseout.native="menuActive = false"
@@ -92,7 +48,7 @@
             <q-list 
               @mouseover.native="listActive = true"
               @mouseout.native="listActive = false"
-              style="min-width: 100px"
+              style="min-width: 200px"
               dense
               separator
               bordered>
@@ -105,7 +61,7 @@
                 </div>
             </q-list>
           </q-menu>
-        </q-btn> -->
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -163,6 +119,9 @@ export default {
     this.$q.iconSet.arrow.dropdown = "menu"
   },
   methods: {
+    menus(event){
+      console.log(event.target)
+    },
     debounceFunc: debounce(function() { this.checkMenu() }, 100),
     checkMenu () {
       if (this.menuActive || this.listActive) {
