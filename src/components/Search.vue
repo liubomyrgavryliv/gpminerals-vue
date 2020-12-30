@@ -90,7 +90,7 @@ export default {
             }
         }
 
-        return ApiService.get('search', 'mineral_list', params)
+        return ApiService.get('search', 'mineral_list/', params)
                                 .then(function (response) {
                                     console.log(response.data.results)
                                     return response.data.results
