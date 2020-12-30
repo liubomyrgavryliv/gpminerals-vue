@@ -30,15 +30,29 @@
           <q-toolbar-title shrink>
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-            <div>
-            <div 
-              v-if="$q.screen.gt.sm"
-              class="scrollmenu"
-              @mouseover="menuActive = true"
-              @mouseout="menuActive = false"
-            >
-              Menu
-            </div>
+           <q-space />
+          <q-btn-toggle
+                  v-model="model"
+                  v-if="$q.screen.gt.sm"
+                  flat 
+                  stretch
+                  toggle-color="yellow"
+                  :options="[
+                    {label: 'One', value: 'one'},
+                    {label: 'Two', value: 'two'},
+                    {label: 'Three', value: 'three'}
+                  ]"
+                >
+          </q-btn-toggle>
+            <!-- <div>
+              <div 
+                v-if="$q.screen.gt.sm"
+                class="scrollmenu"
+                @mouseover="menuActive = true"
+                @mouseout="menuActive = false"
+              >
+                Menu
+              </div>
               <q-menu           
                 v-model="menu"
                 transition-show="fade"
@@ -59,7 +73,7 @@
                   </div>
               </q-list>
             </q-menu>
-          </div>
+          </div> -->
         <!-- <q-btn
           color="dark" 
           text-color="white"
