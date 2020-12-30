@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr fFf">
     <q-header
       elevated
-      style="background: primary">
+      style="background: info;">
       <q-toolbar>
         <q-btn 
           flat 
@@ -30,30 +30,38 @@
           <q-toolbar-title shrink>
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-        <q-btn-dropdown 
-          color="primary" 
+        <q-btn
+          color="dark" 
+          text-color="white"
           label="Menu"
+          rounded
+          flat
           v-if="$q.screen.gt.sm"
-          v-model="menu"
+          no-caps
           @mouseover.native="menuActive = true"
           @mouseout.native="menuActive = false"
           >
-          <q-list 
-             @mouseover.native="listActive = true"
-             @mouseout.native="listActive = false"
-             style="min-width: 100px"
-             dense
-             separator
-             bordered>
-              <div v-for="link in navigation" :key="link.title">
-                  <q-item clickable v-close-popup :to="link.router_link" exact>
-                      <q-item-section>
-                        {{ link.title }}
-                      </q-item-section>
-                  </q-item>
-              </div>
-          </q-list>
-        </q-btn-dropdown>
+          <q-menu           
+            v-model="menu"
+            transition-show="fade"
+            transition-hide="fade">
+            <q-list 
+              @mouseover.native="listActive = true"
+              @mouseout.native="listActive = false"
+              style="min-width: 100px"
+              dense
+              separator
+              bordered>
+                <div v-for="link in navigation" :key="link.title">
+                    <q-item clickable v-close-popup :to="link.router_link" exact>
+                        <q-item-section>
+                          {{ link.title }}
+                        </q-item-section>
+                    </q-item>
+                </div>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
