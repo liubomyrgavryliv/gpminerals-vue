@@ -1,7 +1,9 @@
 <template>
-  <q-page padding>
+  <q-page 
+    padding
+    >
     <div class="q-gutter-xs">
-      <h3 class="text-center">Explore the minerals</h3>
+      <h3 class="text-center">Explore minerals</h3>
       <Search/>
     </div>
   </q-page>

@@ -99,4 +99,8 @@ export default {
 </script>
 <style scoped>
 
+.q-list {
+    background: aliceblue;
+    border-radius: 10px;
+}
 </style>

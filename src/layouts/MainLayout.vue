@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr fFf">
     <q-header
       elevated
-      class='bg-dark'>
+      class='bg-dark row'>
       <q-toolbar>
         <q-btn 
           flat 
@@ -13,7 +13,7 @@
           >
           <q-menu>
              <q-list 
-             style="min-width: 100px"
+             style="min-width: 60vw"
              dense
              separator
              bordered>
@@ -27,41 +27,45 @@
              </q-list>
         </q-menu>
           </q-btn>
-          <q-toolbar-title>
+          <q-toolbar-title
+          shrink
+          >
             GP&lt;minerals/&gt;
           </q-toolbar-title>
-        <q-btn
-          color="dark" 
-          text-color="white"
-          label="Menu"
-          rounded
-          flat
-          v-if="$q.screen.gt.xs"
-          no-caps
-          @mouseover.native="menuActive = true"
-          @mouseout.native="menuActive = false"
-          >
-          <q-menu           
-            v-model="menu"
-            transition-show="fade"
-            transition-hide="fade">
-            <q-list 
-              @mouseover.native="listActive = true"
-              @mouseout.native="listActive = false"
-              style="min-width: 200px"
-              dense
-              separator
-              bordered>
-                <div v-for="link in navigation" :key="link.title">
-                    <q-item clickable v-close-popup :to="link.router_link" exact>
-                        <q-item-section>
-                          {{ link.title }}
-                        </q-item-section>
-                    </q-item>
-                </div>
-            </q-list>
-          </q-menu>
-        </q-btn>
+          <div class="row justify-center">
+          <q-btn
+            color="dark" 
+            text-color="white"
+            label="Menu"
+            rounded
+            flat
+            v-if="$q.screen.gt.xs"
+            no-caps
+            @mouseover.native="menuActive = true"
+            @mouseout.native="menuActive = false"
+            >
+            <q-menu           
+              v-model="menu"
+              transition-show="fade"
+              transition-hide="fade">
+              <q-list 
+                @mouseover.native="listActive = true"
+                @mouseout.native="listActive = false"
+                style="min-width: 200px"
+                dense
+                separator
+                bordered>
+                  <div v-for="link in navigation" :key="link.title">
+                      <q-item clickable v-close-popup :to="link.router_link" exact>
+                          <q-item-section>
+                            {{ link.title }}
+                          </q-item-section>
+                      </q-item>
+                  </div>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
