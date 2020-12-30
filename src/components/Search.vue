@@ -33,6 +33,31 @@
                             <q-item-label caption lines="1"><span v-html="item.formula"></span></q-item-label>
                         </q-item-section>
                         <q-item-section side>
+                            <q-icon name="settings_remote" class="text-brown cursor-pointer">
+                                <q-popup-proxy>
+                                <!-- <q-dialog 
+                                        auto-close
+                                        seamless> -->
+                                        <q-banner>
+                                        <q-card>
+                                            <q-card-section class="bg-dark text-white">
+                                                <div class="text-h6">{{ item.mineral_name }}</div>
+                                                <div class="text-subtitle2">{{ parseStatusDescription(item.status) }}</div>
+                                            </q-card-section>
+
+                                            <q-separator />
+
+                                            <q-card-actions align="right">
+                                                <q-btn flat>Show details</q-btn>
+                                                <q-btn flat>Action 2</q-btn>
+                                            </q-card-actions>
+                                        </q-card>  
+                                        </q-banner>
+                                <!-- </q-dialog> -->
+                                </q-popup-proxy>
+                            </q-icon>
+                        </q-item-section>
+                        <q-item-section side>
                             <q-item-label v-if="item.ns_index">
                             <q-badge color="secondary">{{ item.ns_index }}</q-badge>
                             </q-item-label>
@@ -40,24 +65,6 @@
                             <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
                             </q-item-label>
                         </q-item-section>
-                               <q-dialog 
-                                    auto-close
-                                    seamless
-                                    v-model="showMineralCard">
-                                    <q-card>
-                                        <q-card-section class="bg-dark text-white">
-                                            <div class="text-h6">{{ item.mineral_name }}</div>
-                                            <div class="text-subtitle2">{{ parseStatusDescription(item.status) }}</div>
-                                        </q-card-section>
-
-                                        <q-separator />
-
-                                        <q-card-actions align="right">
-                                            <q-btn flat>Show details</q-btn>
-                                            <q-btn flat>Action 2</q-btn>
-                                        </q-card-actions>
-                                    </q-card>  
-                               </q-dialog>
                         <!-- <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
                             <q-card>
                                 <q-card-section class="bg-dark text-white">
