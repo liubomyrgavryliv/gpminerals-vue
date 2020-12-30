@@ -16,7 +16,7 @@
              style="min-width: 100px"
              dense
              separator
-             boredered>
+             bordered>
              <div v-for="link in navigation" :key="link.title">
                   <q-item clickable v-close-popup :to="link.router_link" exact>
                       <q-item-section>
@@ -28,16 +28,38 @@
         </q-menu>
           </q-btn>
           <q-toolbar-title shrink>
-            gpminerals
+            GP&lt;minerals/&gt;
           </q-toolbar-title>
-         <div v-if="$q.screen.gt.sm" class='row'>
+         <!-- <div v-if="$q.screen.gt.sm" class='row'>
           <RouterLink
             v-for="link in navigation"
             :key="link.title"
             :title="link.title"
             :router_link="link.router_link"
           ></RouterLink>
-        </div>
+        </div> -->
+        <q-btn-dropdown 
+          color="primary" 
+          label="Menu"
+          v-if="$q.screen.gt.sm"
+          v-model="menuActive"
+          @mouseover.native="menuActive = true"
+          @mouseleave.native="menuActive = false"
+          >
+          <q-list 
+             style="min-width: 100px"
+             dense
+             separator
+             bordered>
+              <div v-for="link in navigation" :key="link.title">
+                  <q-item clickable v-close-popup :to="link.router_link" exact>
+                      <q-item-section>
+                        {{ link.title }}
+                      </q-item-section>
+                  </q-item>
+              </div>
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -72,6 +94,7 @@ export default {
   },
   data () {
     return {
+      menuActive: false,
       leftDrawerOpen: false,
       navigation: [
         {
@@ -90,6 +113,11 @@ export default {
   },
   mounted(){
     this.$q.iconSet.arrow.dropdown = "menu"
+  },
+  methods: {
+    activateMenu(){
+      this.menuActive = !this.menuActive;
+    }
   }
 }
 </script>
