@@ -3,6 +3,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
             <q-input
             rounded 
+            bg-color="white"
             outlined 
             v-model="query" 
             debounce="300"
