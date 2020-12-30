@@ -32,8 +32,13 @@
                             <q-item-label>{{ item.mineral_name }}</q-item-label>
                             <q-item-label caption lines="1"><span v-html="item.formula"></span></q-item-label>
                         </q-item-section>
-                        <q-item-section side top v-if="item.ns_index">
-                            <q-badge floating color="secondary">{{ item.ns_index }}</q-badge>
+                        <q-item-section side thumbnail v-if="item.ns_index">
+                            <q-item-label>
+                            <q-badge color="secondary">{{ item.ns_index }}</q-badge>
+                            </q-item-label>
+                            <q-item-label>
+                            <q-badge color="warning">{{ item.status }}</q-badge>
+                            </q-item-label>
                         </q-item-section>
                     </q-item>
              </template>
@@ -69,8 +74,6 @@ export default {
             }
         }
 
-        
-
         return ApiService.get('search', 'mineral_list', params)
                                 .then(function (response) {
                                     console.log(response.data.results)
@@ -82,9 +85,6 @@ export default {
         },
         clearSearch(){
             this.query = ''
-        },
-        parseStatus(statuses){
-            return statuses.map(d => d.status_id).join(';')
         },
         selectMineral(event){
             console.log(event)
