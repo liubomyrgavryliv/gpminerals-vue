@@ -23,10 +23,6 @@
                 separator
             >
              <template v-slot="{ item }">
-                  <q-list 
-                    :bordered="minerals.length > 0"
-                    separator
-                    >
                     <q-item 
                             clickable 
                             v-ripple
@@ -40,26 +36,6 @@
                             <q-badge floating color="secondary">{{ item.ns_index }}</q-badge>
                         </q-item-section>
                     </q-item>
-                </q-list>
-                <!-- <q-list 
-                    :bordered="minerals.length > 0"
-                    separator
-                    >
-                    <q-item v-for="mineral in minerals"
-                            v-bind:key="mineral.mineral_id"
-                            clickable 
-                            v-ripple
-                            @click="selectMineral(mineral.mineral_id)"
-                            >
-                        <q-item-section>
-                            <q-item-label>{{ mineral.mineral_name }}</q-item-label>
-                            <q-item-label caption lines="1"><span v-html="mineral.formula"></span></q-item-label>
-                        </q-item-section>
-                        <q-item-section side top v-if="mineral.ns_index">
-                            <q-badge floating color="secondary">{{ mineral.ns_index }}</q-badge>
-                        </q-item-section>
-                    </q-item>
-                </q-list> -->
              </template>
             </q-virtual-scroll>
         </div>
