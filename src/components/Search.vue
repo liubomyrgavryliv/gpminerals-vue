@@ -40,10 +40,10 @@
                             <q-badge color="warning">{{ parseStatus(item.status) }}</q-badge>
                             </q-item-label>
                         </q-item-section>
-                            <q-popup-proxy>
-                                 <q-dialog v-model="showMineralCard">
-                                    <q-banner class="bg-dark text-white">
-                                        <q-card>
+                            <!-- <q-popup-proxy> -->
+                                 <!-- <q-dialog> -->
+                                    <!-- <q-banner class="bg-dark text-white"> -->
+                                        <!-- <q-card>
                                             <q-card-section class="bg-dark text-white">
                                                 <div class="text-h6">{{ item.mineral_name }}</div>
                                                 <div class="text-subtitle2">{{ parseStatusDescription(item.status) }}</div>
@@ -55,10 +55,10 @@
                                                 <q-btn flat>Show details</q-btn>
                                                 <q-btn flat>Action 2</q-btn>
                                             </q-card-actions>
-                                        </q-card>  
-                                    </q-banner>
-                                 </q-dialog>
-                            </q-popup-proxy>
+                                        </q-card>   -->
+                                    <!-- </q-banner> -->
+                                 <!-- </q-dialog> -->
+                            <!-- </q-popup-proxy> -->
                         <!-- <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
                             <q-card>
                                 <q-card-section class="bg-dark text-white">
@@ -88,6 +88,7 @@ export default {
         return {
             query: '',
             minerals: [],
+            page: 1,
             showMineralCard: false
         }
     },
